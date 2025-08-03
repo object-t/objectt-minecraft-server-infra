@@ -1,7 +1,12 @@
 - op: replace
   path: /data/config.yaml
   value: |
+    loglevel: info
+    logfile: stdout
     ingress:
       - hostname: stg.mc.object-t.com
         service: tcp://bungeecord-proxy-service-stg.objectt-minecraft-stg.svc:25577
+        originRequest:
+          access:
+            required: false
       - service: http_status:404

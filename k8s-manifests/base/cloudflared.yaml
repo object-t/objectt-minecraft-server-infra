@@ -19,6 +19,8 @@ spec:
         - tunnel
         - --config
         - /etc/cloudflared/config.yaml
+        - --loglevel
+        - info
         - run
         env:
         - name: TUNNEL_TOKEN
