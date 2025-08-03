@@ -6,6 +6,8 @@ resources:
 
 nameSuffix: -stg
 
+namespace: objectt-minecraft-stg
+
 configMapGenerator:
 - name: bungeecord-config
   files:
