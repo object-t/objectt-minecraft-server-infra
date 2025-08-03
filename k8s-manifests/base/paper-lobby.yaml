@@ -24,11 +24,11 @@ spec:
           value: "FALSE"
         - name: TYPE
           value: "PAPER"
-        - name: SPIGOT_SETTINGS_BUNGEECORD
-          value: "true"
+        - name: COPY_CONFIG_DEST
+          value: "/data"
         volumeMounts:
         - name: config-volume
-          mountPath: /config/paper-config.yml
+          mountPath: /config/spigot.yml
           subPath: paper-config.yml
         - name: data
           mountPath: /data
