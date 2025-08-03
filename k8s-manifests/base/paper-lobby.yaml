@@ -24,6 +24,8 @@ spec:
           value: "FALSE"
         - name: TYPE
           value: "PAPER"
+        - name: SPIGOT_SETTINGS_BUNGEECORD
+          value: "true"
         volumeMounts:
         - name: config-volume
           mountPath: /config/paper-config.yml
