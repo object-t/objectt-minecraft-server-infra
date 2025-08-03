@@ -33,6 +33,8 @@ spec:
           value: "false"
         - name: SKIP_SYMLINK_DIRS
           value: "true"
+        - name: OPS
+          value: "naoido"
         volumeMounts:
         - name: config-volume
           mountPath: /config/spigot.yml
