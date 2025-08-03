@@ -3,6 +3,7 @@ listeners:
   motd: 'Staging Minecraft Network'
   priorities:
   - lobby
+  proxy_protocol: true
 servers:
   lobby:
     address: lobby-paper-server-service-stg:25565
@@ -10,4 +11,5 @@ servers:
   survival:
     address: survival-paper-server-service-stg:25565
     restricted: false
+online_mode: true
 ip_forward: true
