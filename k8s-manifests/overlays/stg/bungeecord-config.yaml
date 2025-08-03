@@ -4,6 +4,8 @@ listeners:
   priorities:
   - lobby
   proxy_protocol: false
+  force_default_server: true
+  ping_passthrough: false
 servers:
   lobby:
     address: lobby-paper-server-service-stg:25565
@@ -13,3 +15,8 @@ servers:
     restricted: false
 online_mode: true
 ip_forward: true
+connection_throttle: 4000
+connection_throttle_limit: 3
+timeout: 30000
+remote_ping_timeout: 5000
+remote_ping_cache: 5000
