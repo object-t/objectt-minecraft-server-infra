@@ -1,0 +1,32 @@
+
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: minecraft-network
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/your-username/minecraft-k8s.git
+      revision: HEAD
+      directories:
+      - path: overlays/*
+  template:
+    metadata:
+      name: minecraft-{{path.basename}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/your-username/minecraft-k8s.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: minecraft-{{path.basename}}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

@@ -1,0 +1,7 @@
+- op: replace
+  path: /data/config.yaml
+  value: |
+    ingress:
+      - hostname: stg.mc.object-t.com
+        service: tcp://bungeecord-proxy-service-stg:25577
+      - service: http_status:404

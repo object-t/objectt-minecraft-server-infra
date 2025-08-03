@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bungeecord-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bungeecord-proxy
+  template:
+    metadata:
+      labels:
+        app: bungeecord-proxy
+    spec:
+      containers:
+      - name: bungeecord
+        image: itzg/bungeecord
+        ports:
+        - containerPort: 25577
+        volumeMounts:
+        - name: config-volume
+          mountPath: /server/config.yml
+          subPath: config.yml
+      volumes:
+      - name: config-volume
+        configMap:
+          name: bungeecord-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bungeecord-proxy-service
+spec:
+  selector:
+    app: bungeecord-proxy
+  ports:
+  - name: bungeecord
+    protocol: TCP
+    port: 25577
+    targetPort: 25577
