@@ -8,13 +8,13 @@ nameSuffix: -stg
 
 namespace: objectt-minecraft-stg
 
+resources:
+- spigot-config.yaml
+
 configMapGenerator:
 - name: bungeecord-config
   files:
   - bungeecord-config.yaml
-- name: paper-config
-  files:
-  - paper-config.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
