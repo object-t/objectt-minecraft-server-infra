@@ -4,3 +4,7 @@ settings:
     enabled: true
 spigot:
   bungeecord: true
+  settings:
+    bungeecord: true
+server:
+  online-mode: false
