@@ -21,6 +21,10 @@ spec:
         - name: config-volume
           mountPath: /config/config.yml
           subPath: bungeecord-config.yaml
+      volumes:
+      - name: config-volume
+        configMap:
+          name: bungeecord-config
 ---
 apiVersion: v1
 kind: Service
