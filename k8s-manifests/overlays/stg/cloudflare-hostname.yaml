@@ -3,5 +3,5 @@
   value: |
     ingress:
       - hostname: stg.mc.object-t.com
-        service: tcp://bungeecord-proxy-service-stg:25577
+        service: tcp://bungeecord-proxy-service-stg.objectt-minecraft-stg.svc:25577
       - service: http_status:404
