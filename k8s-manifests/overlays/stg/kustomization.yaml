@@ -12,6 +12,9 @@ configMapGenerator:
 - name: bungeecord-config
   files:
   - bungeecord-config.yaml
+- name: paper-config  
+  files:
+  - spigot.yml
 
 generatorOptions:
   disableNameSuffixHash: true
