@@ -19,7 +19,7 @@ spec:
         - containerPort: 25577
         volumeMounts:
         - name: config-volume
-          mountPath: /server/config.yml
+          mountPath: /config/config.yml
           subPath: bungeecord-config.yaml
       volumes:
       - name: config-volume
