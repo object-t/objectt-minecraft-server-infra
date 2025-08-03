@@ -20,6 +20,8 @@ spec:
         env:
         - name: EULA
           value: "TRUE"
+        - name: ONLINE_MODE
+          value: "FALSE"
         - name: TYPE
           value: "PAPER"
         volumeMounts:
