@@ -21,10 +21,37 @@ spec:
         - name: config-volume
           mountPath: /config/config.yml
           subPath: bungeecord-config.yaml
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        args:
+        - tunnel
+        - --config
+        - /etc/cloudflared/config.yaml
+        - --loglevel
+        - info
+        - --protocol
+        - http2
+        - --no-autoupdate
+        - run
+        env:
+        - name: TUNNEL_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare-token
+              key: CLOUDFLARE_TUNNEL
+        - name: NO_AUTOUPDATE
+          value: "true"
+        volumeMounts:
+        - name: cloudflared-config
+          mountPath: /etc/cloudflared
+          readOnly: true
       volumes:
       - name: config-volume
         configMap:
           name: bungeecord-config
+      - name: cloudflared-config
+        configMap:
+          name: cloudflared-config
 ---
 apiVersion: v1
 kind: Service
