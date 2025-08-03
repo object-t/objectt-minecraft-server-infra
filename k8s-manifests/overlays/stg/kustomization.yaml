@@ -9,7 +9,7 @@ nameSuffix: -stg
 configMapGenerator:
 - name: bungeecord-config
   files:
-  - bungeecord-config.yml
+  - bungeecord-config.yaml
 - name: paper-config
   files:
   - paper-config.yml
