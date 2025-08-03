@@ -1,2 +1,6 @@
 settings:
   bungeecord: true
+  bungeecord-address-tracker:
+    enabled: true
+spigot:
+  bungeecord: true
