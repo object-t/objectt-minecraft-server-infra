@@ -12,7 +12,7 @@ spec:
       labels:
         app: cloudflared
     spec:
-      serviceAccount: cloudflared
+      serviceAccount: cloudflared-stg
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
