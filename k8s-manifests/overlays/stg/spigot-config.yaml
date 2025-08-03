@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: paper-config-stg
+  name: paper-config
   namespace: objectt-minecraft-stg
 data:
   spigot.yml: |
