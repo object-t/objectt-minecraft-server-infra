@@ -3,13 +3,11 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - spigot-config.yaml
 
 nameSuffix: -stg
 
 namespace: objectt-minecraft-stg
-
-resources:
-- spigot-config.yaml
 
 configMapGenerator:
 - name: bungeecord-config
