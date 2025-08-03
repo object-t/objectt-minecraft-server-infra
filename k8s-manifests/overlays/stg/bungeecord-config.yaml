@@ -4,8 +4,8 @@ listeners:
   priorities:
   - lobby
   proxy_protocol: false
-  force_default_server: true
-  ping_passthrough: false
+  force_default_server: false
+  tab_list: GLOBAL_PING
 servers:
   lobby:
     address: lobby-paper-server-service-stg:25565
