@@ -26,10 +26,11 @@ spec:
           value: "PAPER"
         - name: COPY_CONFIG_DEST
           value: "/data"
+        - name: SYNC_SKIP_NEWER_IN_DESTINATION
+          value: "false"
         volumeMounts:
         - name: config-volume
-          mountPath: /config/spigot.yml
-          subPath: paper-config.yml
+          mountPath: /config
         - name: data
           mountPath: /data
       volumes:
