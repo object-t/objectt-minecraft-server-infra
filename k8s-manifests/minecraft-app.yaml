@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/object-t/objectt-minecraft-server-infra.git
       revision: HEAD
       directories:
-      - path: overlays/*
+      - path: k8s-manifests/overlays/*
   template:
     metadata:
       name: minecraft-{{path.basename}}
