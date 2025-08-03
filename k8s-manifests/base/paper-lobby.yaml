@@ -12,6 +12,9 @@ spec:
       labels:
         app: lobby-paper-server
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
       containers:
       - name: paper
         image: itzg/minecraft-server
@@ -28,9 +31,12 @@ spec:
           value: "/data"
         - name: SYNC_SKIP_NEWER_IN_DESTINATION
           value: "false"
+        - name: SKIP_SYMLINK_DIRS
+          value: "true"
         volumeMounts:
         - name: config-volume
-          mountPath: /config
+          mountPath: /config/spigot.yml
+          subPath: spigot.yml
         - name: data
           mountPath: /data
       volumes:
