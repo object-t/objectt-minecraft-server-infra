@@ -4,4 +4,3 @@ resources:
   - bungeecord.yaml
   - paper-lobby.yaml
   - paper-survival.yaml
-  - cloudflared.yaml

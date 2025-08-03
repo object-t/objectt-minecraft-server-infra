@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: cloudflared-config
-data:
-  config.yaml: |
-    # Ingress rules will be configured by stg/prd overlays.

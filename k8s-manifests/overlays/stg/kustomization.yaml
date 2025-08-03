@@ -16,16 +16,5 @@ configMapGenerator:
   files:
   - paper-config.yaml
 
-patches:
-- path: cloudflare-hostname.yaml
-  target:
-    kind: ConfigMap
-    name: cloudflared-config
-
-secretGenerator:
-- name: cloudflare-token
-  envs:
-  - cloudflared.env
-
 generatorOptions:
   disableNameSuffixHash: true
