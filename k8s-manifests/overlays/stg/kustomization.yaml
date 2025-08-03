@@ -23,7 +23,7 @@ patches:
 secretGenerator:
 - name: cloudflare-token
   envs:
-  - .env
+  - cloudflared.env
 
 generatorOptions:
   disableNameSuffixHash: true
