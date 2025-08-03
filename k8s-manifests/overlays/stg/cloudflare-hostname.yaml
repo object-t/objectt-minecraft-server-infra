@@ -8,4 +8,13 @@
     ingress:
       - hostname: stg.mc.object-t.com
         service: tcp://localhost:25577
+        originRequest:
+          connectTimeout: 30s
+          tcpKeepAlive: 30s
+          keepAliveConnections: 100
+          keepAliveTimeout: 90s
+          disableChunkedEncoding: true
+          access:
+            required: false
+            teamDomain: ""
       - service: http_status:404
