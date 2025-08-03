@@ -24,7 +24,8 @@ spec:
           value: "PAPER"
         volumeMounts:
         - name: config-volume
-          mountPath: /config
+          mountPath: /config/paper-config.yml
+          subPath: paper-config.yml
         - name: data
           mountPath: /data
       volumes:
