@@ -1,15 +1,44 @@
 listeners:
-- host: 0.0.0.0:25577
-  motd: 'Staging Minecraft Network - Backend Offline'
-  priorities: []
-  proxy_protocol: false
-  force_default_server: false
+- query_port: 25577
+  motd: '&1Another Bungee server'
   tab_list: GLOBAL_PING
-servers: {}
-online_mode: true
-ip_forward: true
+  query_enabled: false
+  proxy_protocol: false
+  ping_passthrough: false
+  priorities:
+  - lobby
+  bind_local_address: true
+  host: 0.0.0.0:25577
+  max_players: 1
+  tab_size: 60
+  force_default_server: false
+disabled_commands:
+- disabledcommandhere
+network_compression_threshold: 256
+groups:
+  md_5:
+  - admin
 connection_throttle: 4000
 connection_throttle_limit: 3
+stats: 87c80ac8-4226-478b-8635-c67e86c47147
+online_mode: true
+forge_support: false
+inject_commands: false
 timeout: 30000
+log_initial_handler_connections: true
+player_limit: -1
+prevent_proxy_connections: false
+server_connect_timeout: 5000
 remote_ping_timeout: 5000
 remote_ping_cache: 5000
+log_pings: true
+ip_forward: true
+servers:
+  lobby:
+    motd: '&1Just another BungeeCord - Forced Host'
+    address: lobby-paper-server-service-stg:25565
+    restricted: false
+  survival:
+    motd: '&1Just another BungeeCord - Forced Host'
+    address: survival-paper-server-service-stg:25565
+    restricted: false
