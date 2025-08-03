@@ -12,6 +12,7 @@ spec:
       labels:
         app: cloudflared
     spec:
+      serviceAccount: cloudflared
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
@@ -44,3 +45,8 @@ metadata:
 data:
   config.yaml: |
     # Ingress rules will be configured by stg/prd overlays.
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cloudflared
