@@ -12,7 +12,7 @@ configMapGenerator:
   - bungeecord-config.yaml
 - name: paper-config
   files:
-  - paper-config.yml
+  - paper-config.yaml
 
 patches:
 - path: cloudflare-hostname.yaml
