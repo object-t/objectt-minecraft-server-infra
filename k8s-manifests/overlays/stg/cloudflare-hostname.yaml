@@ -3,11 +3,14 @@
   value: |
     loglevel: info
     logfile: stdout
+    metrics: 0.0.0.0:2000
     ingress:
       - hostname: stg.mc.object-t.com
-        service: tcp://bungeecord-proxy-service-stg.objectt-minecraft-stg.svc:25577
+        service: tcp://bungeecord-proxy-service-stg.objectt-minecraft-stg.svc.cluster.local:25577
         originRequest:
-          proxyType: "simple"
-          access:
-            required: false
+          tcpKeepAlive: 30s
+          connectTimeout: 30s
+          noHappyEyeballs: false
+          keepAliveConnections: 100
+          keepAliveTimeout: 1m30s
       - service: http_status:404
