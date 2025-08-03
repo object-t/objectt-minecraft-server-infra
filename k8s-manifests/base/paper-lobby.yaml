@@ -35,6 +35,8 @@ spec:
           value: "true"
         - name: OPS
           value: "naoido"
+        - name: MEMORY
+          value: "5G"
         volumeMounts:
         - name: config-volume
           mountPath: /config/spigot.yml
