@@ -21,6 +21,9 @@ spec:
         - name: config-volume
           mountPath: /config/config.yml
           subPath: bungeecord-config.yaml
+        - name: config-volume
+          mountPath: /config/server-icon.png
+          subPath: server-icon.png
       volumes:
       - name: config-volume
         configMap:

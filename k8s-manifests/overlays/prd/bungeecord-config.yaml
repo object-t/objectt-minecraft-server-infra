@@ -33,6 +33,7 @@ remote_ping_timeout: 5000
 remote_ping_cache: 5000
 log_pings: true
 ip_forward: true
+favicon: server-icon.png
 servers:
   lobby:
     motd: '&1Just another BungeeCord - Forced Host'
