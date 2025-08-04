@@ -3,9 +3,13 @@ kind: Service
 metadata:
   name: bungeecord-proxy-service
 spec:
+  type: LoadBalancer
   loadBalancerIP: 192.168.1.130
+  selector:
+    app: bungeecord-proxy
   ports:
-  - name: bungeecord
+  - $patch: replace
+    name: bungeecord
     protocol: TCP
     port: 25588
     targetPort: 25577
