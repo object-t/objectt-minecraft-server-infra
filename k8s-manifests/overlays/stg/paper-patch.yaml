@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lobby-paper-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: paper
+        env:
+        - name: WHITELIST
+          value: "naoido"
+        - name: MEMORY
+          value: "1G"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survival-paper-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: paper
+        env:
+        - name: WHITELIST
+          value: "naoido"
+        - name: MEMORY
+          value: "1G"

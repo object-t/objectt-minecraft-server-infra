@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lobby-paper-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: paper
+        env:
+        - name: MEMORY
+          value: "5G"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: survival-paper-server
+spec:
+  template:
+    spec:
+      containers:
+      - name: paper
+        env:
+        - name: MEMORY
+          value: "5G"
