@@ -1,8 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: lobby-paper-server
 spec:
+  serviceName: lobby-paper-server-service
   replicas: 1
   selector:
     matchLabels:
@@ -45,9 +46,6 @@ spec:
       - name: config-volume
         configMap:
           name: paper-config
-      - name: data
-        persistentVolumeClaim:
-          claimName: lobby-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -61,15 +59,13 @@ spec:
     protocol: TCP
     port: 25565
     targetPort: 25565
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: lobby-pvc
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: nfs-csi
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi
+      storageClassName: nfs-csi
