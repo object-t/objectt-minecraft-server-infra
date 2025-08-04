@@ -36,9 +36,9 @@ ip_forward: true
 servers:
   lobby:
     motd: '&1Just another BungeeCord - Forced Host'
-    address: lobby-paper-server-service-stg:25565
+    address: lobby-paper-server-service-prd:25565
     restricted: false
   survival:
     motd: '&1Just another BungeeCord - Forced Host'
-    address: survival-paper-server-service-stg:25565
+    address: survival-paper-server-service-prd:25565
     restricted: false
