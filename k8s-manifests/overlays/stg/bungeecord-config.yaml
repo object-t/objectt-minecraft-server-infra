@@ -36,10 +36,10 @@ ip_forward: true
 favicon: server-icon.png
 servers:
   lobby:
-    motd: '&1Just another BungeeCord - Forced Host'
+    motd: '\u00a7l \u00a79                   \u30fb\u304a\u3076\u3058\u3047\u3063\u3066\u3043\u751f\u6d3b\u9bd6\u30fb\u00a7r\n\u00a7l \u00a7r                       \u00a7ka \u00a7e\u30b9\u30c6\u30fc\u30b8\u30f3\u30b0 \u00a7r\u00a7ka'
     address: lobby-paper-server-service-stg:25565
     restricted: false
   survival:
-    motd: '&1Just another BungeeCord - Forced Host'
+    motd: '\u00a7l \u00a79                   \u30fb\u304a\u3076\u3058\u3047\u3063\u3066\u3043\u751f\u6d3b\u9bd6\u30fb\u00a7r\n\u00a7l \u00a7r                       \u00a7ka \u00a7e\u30b9\u30c6\u30fc\u30b8\u30f3\u30b0 \u00a7r\u00a7ka'
     address: survival-paper-server-service-stg:25565
     restricted: false
