@@ -46,6 +46,16 @@ spec:
       - name: config-volume
         configMap:
           name: paper-config
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 5Gi
+      storageClassName: nfs-csi
 ---
 apiVersion: v1
 kind: Service
@@ -59,13 +69,3 @@ spec:
     protocol: TCP
     port: 25565
     targetPort: 25565
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 5Gi
-      storageClassName: nfs-csi
