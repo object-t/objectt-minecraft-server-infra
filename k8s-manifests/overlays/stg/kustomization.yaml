@@ -10,7 +10,7 @@ namespace: objectt-minecraft-stg
 
 patchesStrategicMerge:
 - paper-patch.yaml
-- loadbalancer-ip-patch.yaml
+- loadbalancer-patch.yaml
 
 configMapGenerator:
 - name: bungeecord-config
