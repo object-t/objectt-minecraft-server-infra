@@ -7,6 +7,6 @@ spec:
   ports:
   - name: bungeecord
     protocol: TCP
-    port: 25588
+    port: 25577
     targetPort: 25588
     nodePort: 30588
