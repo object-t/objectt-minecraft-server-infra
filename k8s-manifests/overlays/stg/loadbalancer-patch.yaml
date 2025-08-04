@@ -8,7 +8,7 @@ spec:
   selector:
     app: bungeecord-proxy
   ports:
-  - name: bungeecord
+  - name: bungeecord-stg
     protocol: TCP
     port: 25588
     targetPort: 25577
