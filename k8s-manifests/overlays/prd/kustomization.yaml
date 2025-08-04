@@ -4,9 +4,9 @@ kind: Kustomization
 resources:
   - ../../base
 
-nameSuffix: -stg
+nameSuffix: -prd
 
-namespace: objectt-minecraft-stg
+namespace: objectt-minecraft-prd
 
 patchesStrategicMerge:
 - paper-patch.yaml
