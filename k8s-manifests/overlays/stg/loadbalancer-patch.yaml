@@ -8,8 +8,7 @@ spec:
   selector:
     app: bungeecord-proxy
   ports:
-  - $patch: replace
-    name: bungeecord
+  - name: bungeecord
     protocol: TCP
     port: 25588
     targetPort: 25577

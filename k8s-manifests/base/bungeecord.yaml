@@ -39,4 +39,3 @@ spec:
     protocol: TCP
     port: 25577
     targetPort: 25577
-    nodePort: 30577
