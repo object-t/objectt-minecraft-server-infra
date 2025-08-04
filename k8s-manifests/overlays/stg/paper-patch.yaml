@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: lobby-paper-server
 spec:
@@ -14,7 +14,7 @@ spec:
           value: "1G"
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: survival-paper-server
 spec:
