@@ -1,6 +1,6 @@
 listeners:
 - query_port: 25577
-  motd: '\u00a7l \u00a7a                   \u30fb\u304a\u3076\u3058\u3047\u3063\u3066\u3043\u751f\u6d3b\u9bd6\u30fb\u00a7r\n\u00a7l \u00a7d                         \u26cf v1.21.8'
+  motd: "§l §a                   ・おぶじぇってぃ生活鯖・§r\n§l §d                         ⛏️ v1.21.8"
   tab_list: GLOBAL_PING
   query_enabled: false
   proxy_protocol: false
