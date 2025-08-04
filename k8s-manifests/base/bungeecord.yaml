@@ -32,7 +32,6 @@ metadata:
   name: bungeecord-proxy-service
 spec:
   type: LoadBalancer
-  loadBalancerIP: 192.168.1.130
   selector:
     app: bungeecord-proxy
   ports:
