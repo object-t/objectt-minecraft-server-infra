@@ -50,9 +50,12 @@ spec:
         env:
         - name: MEMORY
           value: "5G"
+        env:
+        - name: COPY_PLUGINS_SRC
+          value: "/plugins"
         volumeMounts:
         - name: plugins-volume
-          mountPath: /data/plugins
+          mountPath: /plugins
       volumes:
       - name: plugins-volume
         emptyDir: {}
@@ -109,9 +112,12 @@ spec:
         env:
         - name: MEMORY
           value: "5G"
+        env:
+        - name: COPY_PLUGINS_SRC
+          value: "/plugins"
         volumeMounts:
         - name: plugins-volume
-          mountPath: /data/plugins
+          mountPath: /plugins
       volumes:
       - name: plugins-volume
         emptyDir: {}
