@@ -5,5 +5,4 @@ resources:
   - paper-lobby.yaml
   - paper-survival.yaml
   - minio.yaml
-  - ssh-server.yaml
   - cloudflared-tunnel.yaml
