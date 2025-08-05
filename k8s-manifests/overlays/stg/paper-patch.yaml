@@ -6,21 +6,45 @@ spec:
   template:
     spec:
       initContainers:
-      - name: mod-downloader
-        image: ghcr.io/giganticminecraft/mod-downloader:sha-6292501
+      - name: plugin-downloader
+        image: alpine/curl:latest
         env:
         - name: MINIO_ENDPOINT
           value: "minio-service-stg:9000"
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-user
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-password
         - name: BUCKET_NAME
-          value: "stg-plugins"
-        - name: DOWNLOAD_TARGET_DIR_PATH
-          value: "/downloaded-plugins"
+          value: "plugins"
         volumeMounts:
-        - name: mod-downloader-volume
-          mountPath: /downloaded-plugins
-      volumes:
-      - name: mod-downloader-volume
-        emptyDir: {}
+        - name: plugins-volume
+          mountPath: /plugins
+        command:
+        - sh
+        - -c
+        - |
+          echo "Downloading plugins from MinIO..."
+          mkdir -p /plugins
+          
+          # Download mc (MinIO Client)
+          wget -O /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x /tmp/mc
+          
+          # Configure MinIO connection
+          /tmp/mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
+          
+          # Download all plugins from bucket
+          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/
+          
+          echo "Plugin download completed"
+          ls -la /plugins
       containers:
       - name: paper
         env:
@@ -28,14 +52,11 @@ spec:
           value: "naoido,kurazuuuuuu"
         - name: MEMORY
           value: "1G"
-        - name: COPY_PLUGINS_SRC
-          value: |-
-            /downloaded-plugins
         volumeMounts:
-        - name: mod-downloader-volume
-          mountPath: /downloaded-plugins
+        - name: plugins-volume
+          mountPath: /data/plugins
       volumes:
-      - name: mod-downloader-volume
+      - name: plugins-volume
         emptyDir: {}
 ---
 apiVersion: apps/v1
@@ -46,21 +67,45 @@ spec:
   template:
     spec:
       initContainers:
-      - name: mod-downloader
-        image: ghcr.io/giganticminecraft/mod-downloader:sha-6292501
+      - name: plugin-downloader
+        image: alpine/curl:latest
         env:
         - name: MINIO_ENDPOINT
           value: "minio-service-stg:9000"
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-user
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-password
         - name: BUCKET_NAME
-          value: "stg-plugins"
-        - name: DOWNLOAD_TARGET_DIR_PATH
-          value: "/downloaded-plugins"
+          value: "plugins"
         volumeMounts:
-        - name: mod-downloader-volume
-          mountPath: /downloaded-plugins
-      volumes:
-      - name: mod-downloader-volume
-        emptyDir: {}
+        - name: plugins-volume
+          mountPath: /plugins
+        command:
+        - sh
+        - -c
+        - |
+          echo "Downloading plugins from MinIO..."
+          mkdir -p /plugins
+          
+          # Download mc (MinIO Client)
+          wget -O /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x /tmp/mc
+          
+          # Configure MinIO connection
+          /tmp/mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
+          
+          # Download all plugins from bucket
+          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/
+          
+          echo "Plugin download completed"
+          ls -la /plugins
       containers:
       - name: paper
         env:
@@ -68,12 +113,9 @@ spec:
           value: "naoido,kurazuuuuuu"
         - name: MEMORY
           value: "1G"
-        - name: COPY_PLUGINS_SRC
-          value: |-
-            /downloaded-plugins
         volumeMounts:
-        - name: mod-downloader-volume
-          mountPath: /downloaded-plugins
+        - name: plugins-volume
+          mountPath: /data/plugins
       volumes:
-      - name: mod-downloader-volume
+      - name: plugins-volume
         emptyDir: {}

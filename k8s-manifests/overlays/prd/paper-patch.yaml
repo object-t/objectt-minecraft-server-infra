@@ -31,9 +31,20 @@ spec:
         - -c
         - |
           echo "Downloading plugins from MinIO..."
-          # Download plugins from MinIO bucket
           mkdir -p /plugins
+          
+          # Download mc (MinIO Client)
+          wget -O /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x /tmp/mc
+          
+          # Configure MinIO connection
+          /tmp/mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
+          
+          # Download all plugins from bucket
+          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/
+          
           echo "Plugin download completed"
+          ls -la /plugins
       containers:
       - name: paper
         env:
@@ -79,9 +90,20 @@ spec:
         - -c
         - |
           echo "Downloading plugins from MinIO..."
-          # Download plugins from MinIO bucket
           mkdir -p /plugins
+          
+          # Download mc (MinIO Client)
+          wget -O /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x /tmp/mc
+          
+          # Configure MinIO connection
+          /tmp/mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
+          
+          # Download all plugins from bucket
+          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/
+          
           echo "Plugin download completed"
+          ls -la /plugins
       containers:
       - name: paper
         env:
