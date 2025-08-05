@@ -1,6 +1,6 @@
 listeners:
 - query_port: 25577
-  motd: "§l §9                   ・おぶじぇってぃ生活鯖・§r\n§l §r                       §ka §eステージング §r§ka"
+  motd: "§l §9                ・おぶじぇってぃ生活鯖・§r\n§l §r                    §ka §eステージング §r§ka"
   tab_list: GLOBAL_PING
   query_enabled: false
   proxy_protocol: false
