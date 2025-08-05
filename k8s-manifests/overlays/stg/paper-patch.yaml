@@ -37,11 +37,20 @@ spec:
           wget -O /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x /tmp/mc
           
+          # Set MC config directory to writable location
+          export MC_CONFIG_DIR=/tmp/.mc
+          mkdir -p $MC_CONFIG_DIR
+          
           # Configure MinIO connection
           /tmp/mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
           
+          # List buckets to verify connection
+          echo "Available buckets:"
+          /tmp/mc ls minio/
+          
           # Download all plugins from bucket
-          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/
+          echo "Downloading from bucket: ${BUCKET_NAME}"
+          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/ || echo "No files in bucket or bucket not found"
           
           echo "Plugin download completed"
           ls -la /plugins
@@ -100,11 +109,20 @@ spec:
           wget -O /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x /tmp/mc
           
+          # Set MC config directory to writable location
+          export MC_CONFIG_DIR=/tmp/.mc
+          mkdir -p $MC_CONFIG_DIR
+          
           # Configure MinIO connection
           /tmp/mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
           
+          # List buckets to verify connection
+          echo "Available buckets:"
+          /tmp/mc ls minio/
+          
           # Download all plugins from bucket
-          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/
+          echo "Downloading from bucket: ${BUCKET_NAME}"
+          /tmp/mc cp --recursive minio/${BUCKET_NAME}/ /plugins/ || echo "No files in bucket or bucket not found"
           
           echo "Plugin download completed"
           ls -la /plugins
