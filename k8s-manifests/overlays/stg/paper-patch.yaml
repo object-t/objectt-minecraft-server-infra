@@ -5,6 +5,22 @@ metadata:
 spec:
   template:
     spec:
+      initContainers:
+      - name: mod-downloader
+        image: ghcr.io/giganticminecraft/mod-downloader:sha-6292501
+        env:
+        - name: MINIO_ENDPOINT
+          value: "minio-service-stg:9000"
+        - name: BUCKET_NAME
+          value: "stg-plugins"
+        - name: DOWNLOAD_TARGET_DIR_PATH
+          value: "/downloaded-plugins"
+        volumeMounts:
+        - name: mod-downloader-volume
+          mountPath: /downloaded-plugins
+      volumes:
+      - name: mod-downloader-volume
+        emptyDir: {}
       containers:
       - name: paper
         env:
@@ -12,6 +28,15 @@ spec:
           value: "naoido,kurazuuuuuu"
         - name: MEMORY
           value: "1G"
+        - name: COPY_PLUGINS_SRC
+          value: |-
+            /downloaded-plugins
+        volumeMounts:
+        - name: mod-downloader-volume
+          mountPath: /downloaded-plugins
+      volumes:
+      - name: mod-downloader-volume
+        emptyDir: {}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -20,6 +45,22 @@ metadata:
 spec:
   template:
     spec:
+      initContainers:
+      - name: mod-downloader
+        image: ghcr.io/giganticminecraft/mod-downloader:sha-6292501
+        env:
+        - name: MINIO_ENDPOINT
+          value: "minio-service-stg:9000"
+        - name: BUCKET_NAME
+          value: "stg-plugins"
+        - name: DOWNLOAD_TARGET_DIR_PATH
+          value: "/downloaded-plugins"
+        volumeMounts:
+        - name: mod-downloader-volume
+          mountPath: /downloaded-plugins
+      volumes:
+      - name: mod-downloader-volume
+        emptyDir: {}
       containers:
       - name: paper
         env:
@@ -27,3 +68,12 @@ spec:
           value: "naoido,kurazuuuuuu"
         - name: MEMORY
           value: "1G"
+        - name: COPY_PLUGINS_SRC
+          value: |-
+            /downloaded-plugins
+        volumeMounts:
+        - name: mod-downloader-volume
+          mountPath: /downloaded-plugins
+      volumes:
+      - name: mod-downloader-volume
+        emptyDir: {}

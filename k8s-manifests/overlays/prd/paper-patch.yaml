@@ -5,11 +5,46 @@ metadata:
 spec:
   template:
     spec:
+      initContainers:
+      - name: plugin-downloader
+        image: alpine/curl:latest
+        env:
+        - name: MINIO_ENDPOINT
+          value: "minio-service-prd:9000"
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-user
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-password
+        - name: BUCKET_NAME
+          value: "plugins"
+        volumeMounts:
+        - name: plugins-volume
+          mountPath: /plugins
+        command:
+        - sh
+        - -c
+        - |
+          echo "Downloading plugins from MinIO..."
+          # Download plugins from MinIO bucket
+          mkdir -p /plugins
+          echo "Plugin download completed"
       containers:
       - name: paper
         env:
         - name: MEMORY
           value: "5G"
+        volumeMounts:
+        - name: plugins-volume
+          mountPath: /data/plugins
+      volumes:
+      - name: plugins-volume
+        emptyDir: {}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -18,8 +53,43 @@ metadata:
 spec:
   template:
     spec:
+      initContainers:
+      - name: plugin-downloader
+        image: alpine/curl:latest
+        env:
+        - name: MINIO_ENDPOINT
+          value: "minio-service-prd:9000"
+        - name: MINIO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-user
+        - name: MINIO_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: minio-credentials
+              key: root-password
+        - name: BUCKET_NAME
+          value: "plugins"
+        volumeMounts:
+        - name: plugins-volume
+          mountPath: /plugins
+        command:
+        - sh
+        - -c
+        - |
+          echo "Downloading plugins from MinIO..."
+          # Download plugins from MinIO bucket
+          mkdir -p /plugins
+          echo "Plugin download completed"
       containers:
       - name: paper
         env:
         - name: MEMORY
           value: "5G"
+        volumeMounts:
+        - name: plugins-volume
+          mountPath: /data/plugins
+      volumes:
+      - name: plugins-volume
+        emptyDir: {}

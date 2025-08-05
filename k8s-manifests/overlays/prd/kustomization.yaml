@@ -3,6 +3,8 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - cloudflare-config.yaml
+  - minio-secret.yaml
 
 nameSuffix: -prd
 
