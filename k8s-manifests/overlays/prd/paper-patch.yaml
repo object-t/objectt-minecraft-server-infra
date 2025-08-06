@@ -58,7 +58,7 @@ spec:
       - name: paper
         env:
         - name: MEMORY
-          value: "5G"
+          value: "16G"
         - name: JVM_OPTS
           value: >-
             -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=130
@@ -72,10 +72,10 @@ spec:
             -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true
         resources:
           requests:
-            cpu: "2"
+            cpu: "8"
             memory: "6Gi"
           limits:
-            cpu: "4"
+            cpu: "8"
             memory: "6Gi"
         env:
         - name: COPY_PLUGINS_SRC
@@ -147,7 +147,7 @@ spec:
       - name: paper
         env:
         - name: MEMORY
-          value: "5G"
+          value: "16G"
         - name: JVM_OPTS
           value: >-
             -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=130
@@ -161,11 +161,11 @@ spec:
             -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true
         resources:
           requests:
-            cpu: "2"
-            memory: "6Gi"
+            cpu: "8"
+            memory: "22Gi"
           limits:
-            cpu: "4"
-            memory: "6Gi"
+            cpu: "10"
+            memory: "22Gi"
         env:
         - name: COPY_PLUGINS_SRC
           value: "/plugins"
