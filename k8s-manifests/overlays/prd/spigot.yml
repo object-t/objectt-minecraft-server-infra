@@ -23,5 +23,20 @@ messages:
   restart: Server is restarting
 world-settings:
   default:
-    view-distance: default
-    simulation-distance: default
+    view-distance: 8
+    simulation-distance: 6
+    mob-spawn-range: 6
+    entity-activation-range:
+      animals: 24
+      monsters: 24
+      raiders: 40
+      misc: 12
+      water: 12
+      villagers: 24
+      flying-monsters: 24
+    entity-tracking-range:
+      players: 40
+      animals: 40
+      monsters: 40
+      misc: 24
+      other: 48

@@ -59,6 +59,25 @@ spec:
         env:
         - name: MEMORY
           value: "5G"
+        - name: JVM_OPTS
+          value: >-
+            -javaagent:/jmx-exporter/jmx_prometheus_javaagent.jar=18321:/jmx-exporter/jmx-exporter-config.yaml
+            -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=130
+            -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch
+            -XX:G1NewSizePercent=28 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=16M
+            -XX:G1ReservePercent=15 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=3
+            -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=90
+            -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem
+            -XX:MaxTenuringThreshold=1 -XX:+UseStringDeduplication
+            -XX:StringDeduplicationAgeThreshold=3
+            -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true
+        resources:
+          requests:
+            cpu: "2"
+            memory: "6Gi"
+          limits:
+            cpu: "4"
+            memory: "6Gi"
         env:
         - name: COPY_PLUGINS_SRC
           value: "/plugins"
@@ -130,6 +149,25 @@ spec:
         env:
         - name: MEMORY
           value: "5G"
+        - name: JVM_OPTS
+          value: >-
+            -javaagent:/jmx-exporter/jmx_prometheus_javaagent.jar=18321:/jmx-exporter/jmx-exporter-config.yaml
+            -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=130
+            -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch
+            -XX:G1NewSizePercent=28 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=16M
+            -XX:G1ReservePercent=15 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=3
+            -XX:InitiatingHeapOccupancyPercent=10 -XX:G1MixedGCLiveThresholdPercent=90
+            -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem
+            -XX:MaxTenuringThreshold=1 -XX:+UseStringDeduplication
+            -XX:StringDeduplicationAgeThreshold=3
+            -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true
+        resources:
+          requests:
+            cpu: "2"
+            memory: "6Gi"
+          limits:
+            cpu: "4"
+            memory: "6Gi"
         env:
         - name: COPY_PLUGINS_SRC
           value: "/plugins"
