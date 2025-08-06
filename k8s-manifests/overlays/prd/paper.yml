@@ -1,24 +1,10 @@
-config-version: 28
-settings:
-  chunk-loading-advanced:
-    auto-config-send-distance: true
-    player-max-concurrent-chunk-generates: 2
-    player-max-concurrent-chunk-loads: 4
-    player-max-chunk-generate-rate: 10.0
-    player-max-chunk-load-rate: 100.0
-    player-max-chunk-send-rate: 75.0
-  async-chunks:
-    enable: true
-    threads: 6
 world-settings:
   default:
     keep-spawn-loaded-range: 8
     keep-spawn-loaded: true
-    delay-chunk-unloads-by: 5s
+    delay-chunk-unloads-by: 10000
     max-auto-save-chunks-per-tick: 12
-    auto-save-interval: 300
+    auto-save-interval: -1
     prevent-moving-into-unloaded-chunks: true
     per-player-mob-spawns: true
     count-all-mobs-for-spawning: false
-    use-faster-eigencraft-redstone: true
-    light-queue-size: 20
