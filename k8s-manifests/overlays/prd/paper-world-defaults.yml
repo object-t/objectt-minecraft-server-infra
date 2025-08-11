@@ -10,7 +10,6 @@ chunk-loading-advanced:
 
 world-settings:
   default:
-    # Chunk generation optimization
     max-auto-save-chunks-per-tick: -1
     entity-per-chunk-save-limit:
       experience_orb: 16
@@ -18,21 +17,27 @@ world-settings:
       ender_pearl: 16
       arrow: 16
     
-    # Performance optimizations
     optimize-explosions: true
     use-faster-eigencraft-redstone: true
     
-    # Mob spawning optimizations
     per-player-mob-spawns: true
     mob-spawner-tick-rate: 1
     
-    # Advanced chunk processing optimizations
-    delay-chunk-unloads-by: 10s
+    delay-chunk-unloads-by: 30s
     prevent-moving-into-unloaded-chunks: true
     
-    # Entity processing optimizations
     update-pathfinding-on-block-update: true
     
-    # Tick rate optimizations
-    container-update-tick-rate: 3
-    grass-spread-tick-rate: 4
+    keep-spawn-loaded: false
+    keep-spawn-loaded-range: 2
+    
+    container-update-tick-rate: 2
+    grass-spread-tick-rate: 2
+    
+    fixed-chunk-inhabited-time: 0
+    max-entity-collisions: 4
+    
+    auto-save-interval: 6000
+    
+    armor-stands-do-collision-entity-lookups: false
+    armor-stands-tick: false

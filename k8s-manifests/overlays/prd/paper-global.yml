@@ -1,9 +1,9 @@
 chunk-system:
   gen-parallelism: default
-  io-threads: 8
-  worker-threads: 8
+  io-threads: 4
+  worker-threads: 4
 misc:
-  region-file-cache-size: 2048
+  region-file-cache-size: 4096
   max-joins-per-tick: 50
 packet-limiter:
   kick-message: "&cSent too many packets"
@@ -19,4 +19,4 @@ player-auto-save:
 # Async processing optimizations  
 async:
   pathfinding:
-    max-threads: 8
+    max-threads: 4
