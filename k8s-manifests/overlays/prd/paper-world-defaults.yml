@@ -1,0 +1,32 @@
+chunk-loading:
+  max-concurrent-sends: 8
+  autoconfig-send-distance: true
+  target-player-chunk-send-rate: -1.0
+  global-max-chunk-send-rate: -1.0
+  enable-frustum-priority: false
+  global-max-chunk-load-rate: -1.0
+  player-max-concurrent-loads: 50.0
+  global-max-concurrent-loads: 1000.0
+
+chunk-loading-advanced:
+  auto-config-send-distance: true
+  player-max-chunk-generate-rate: -1.0
+  player-max-chunk-load-rate: -1.0
+
+world-settings:
+  default:
+    # Chunk generation optimization
+    max-auto-save-chunks-per-tick: 64
+    entity-per-chunk-save-limit:
+      experience_orb: 16
+      snowball: 16
+      ender_pearl: 16
+      arrow: 16
+    
+    # Performance optimizations
+    optimize-explosions: true
+    use-faster-eigencraft-redstone: true
+    
+    # Mob spawning optimizations
+    per-player-mob-spawns: true
+    mob-spawner-tick-rate: 1

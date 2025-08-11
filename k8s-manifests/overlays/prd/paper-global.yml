@@ -1,0 +1,17 @@
+chunk-system:
+  gen-parallelism: -1
+  io-threads: -1
+  worker-threads: -1
+misc:
+  region-file-cache-size: 1024
+  max-joins-per-tick: 20
+packet-limiter:
+  kick-message: "&cSent too many packets"
+  limits:
+    all:
+      action: KICK
+      interval: 7.0
+      max-packet-rate: 500.0
+player-auto-save:
+  max-per-tick: 20
+  rate: 6000

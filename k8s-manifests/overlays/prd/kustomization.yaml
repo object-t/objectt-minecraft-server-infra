@@ -22,6 +22,8 @@ configMapGenerator:
 - name: paper-config  
   files:
   - spigot.yml
+  - paper-global.yml
+  - paper-world-defaults.yml
 
 generatorOptions:
   disableNameSuffixHash: true
