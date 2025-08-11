@@ -1,7 +1,7 @@
 chunk-system:
   gen-parallelism: default
-  io-threads: 4
-  worker-threads: 4
+  io-threads: 8
+  worker-threads: 8
 misc:
   region-file-cache-size: 4096
   max-joins-per-tick: 50
