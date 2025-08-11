@@ -5,6 +5,19 @@ metadata:
 spec:
   template:
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: DoesNotExist
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - "k8s-wk-1"
+                - "k8s-wk-2"
+                - "k8s-wk-3"
       initContainers:
       - name: plugin-downloader
         image: alpine/curl:latest
@@ -77,6 +90,27 @@ metadata:
 spec:
   template:
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: DoesNotExist
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - "k8s-wk-1"
+                - "k8s-wk-2"
+                - "k8s-wk-3"
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: lobby-paper-server
+              topologyKey: kubernetes.io/hostname
       initContainers:
       - name: plugin-downloader
         image: alpine/curl:latest
