@@ -5,6 +5,7 @@ metadata:
 spec:
   serviceName: lobby-paper-server-service
   replicas: 1
+  revisionHistoryLimit: 5
   selector:
     matchLabels:
       app: lobby-paper-server
