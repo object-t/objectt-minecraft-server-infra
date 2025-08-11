@@ -141,9 +141,6 @@ spec:
           requests:
             cpu: "1"
             memory: "6Gi"
-          limits:
-            cpu: "4"
-            memory: "6Gi"
         env:
         - name: COPY_PLUGINS_SRC
           value: "/plugins"
