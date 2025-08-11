@@ -13,5 +13,10 @@ packet-limiter:
       interval: 7.0
       max-packet-rate: 500.0
 player-auto-save:
-  max-per-tick: 20
+  max-per-tick: -1
   rate: 6000
+
+# Async processing optimizations  
+async:
+  pathfinding:
+    max-threads: -1

@@ -5,8 +5,8 @@ chunk-loading:
   global-max-chunk-send-rate: -1.0
   enable-frustum-priority: false
   global-max-chunk-load-rate: -1.0
-  player-max-concurrent-loads: 50.0
-  global-max-concurrent-loads: 1000.0
+  player-max-concurrent-loads: -1.0
+  global-max-concurrent-loads: -1.0
 
 chunk-loading-advanced:
   auto-config-send-distance: true
@@ -16,7 +16,7 @@ chunk-loading-advanced:
 world-settings:
   default:
     # Chunk generation optimization
-    max-auto-save-chunks-per-tick: 64
+    max-auto-save-chunks-per-tick: -1
     entity-per-chunk-save-limit:
       experience_orb: 16
       snowball: 16
@@ -30,3 +30,8 @@ world-settings:
     # Mob spawning optimizations
     per-player-mob-spawns: true
     mob-spawner-tick-rate: 1
+    
+    # Aggressive chunk processing
+    delay-chunk-unloads-by: 0s
+    max-chunk-sends-per-tick: -1
+    max-chunk-gens-per-tick: -1
