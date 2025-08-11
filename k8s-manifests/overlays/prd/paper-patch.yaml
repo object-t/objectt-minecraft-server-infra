@@ -105,8 +105,9 @@ spec:
               - key: kubernetes.io/hostname
                 operator: In
                 values:
-                - "k8s-wk-4"
-                - "k8s-wk-5"
+                - "k8s-wk-1"
+                - "k8s-wk-2"
+                - "k8s-wk-3"
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 50
