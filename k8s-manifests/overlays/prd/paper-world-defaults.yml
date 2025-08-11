@@ -5,8 +5,8 @@ chunk-loading-basic:
 
 chunk-loading-advanced:
   auto-config-send-distance: true
-  player-max-concurrent-chunk-generates: 0
-  player-max-concurrent-chunk-loads: 0
+  player-max-concurrent-chunk-generates: -1
+  player-max-concurrent-chunk-loads: -1
 
 world-settings:
   default:
