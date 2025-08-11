@@ -1,17 +1,12 @@
-chunk-loading:
-  max-concurrent-sends: 8
-  autoconfig-send-distance: true
-  target-player-chunk-send-rate: -1.0
-  global-max-chunk-send-rate: -1.0
-  enable-frustum-priority: false
-  global-max-chunk-load-rate: -1.0
-  player-max-concurrent-loads: -1.0
-  global-max-concurrent-loads: -1.0
+chunk-loading-basic:
+  player-max-chunk-generate-rate: -1.0
+  player-max-chunk-load-rate: -1.0
+  player-max-chunk-send-rate: -1.0
 
 chunk-loading-advanced:
   auto-config-send-distance: true
-  player-max-chunk-generate-rate: -1.0
-  player-max-chunk-load-rate: -1.0
+  player-max-concurrent-chunk-generates: 0
+  player-max-concurrent-chunk-loads: 0
 
 world-settings:
   default:
@@ -31,7 +26,13 @@ world-settings:
     per-player-mob-spawns: true
     mob-spawner-tick-rate: 1
     
-    # Aggressive chunk processing
-    delay-chunk-unloads-by: 0s
-    max-chunk-sends-per-tick: -1
-    max-chunk-gens-per-tick: -1
+    # Advanced chunk processing optimizations
+    delay-chunk-unloads-by: 10s
+    prevent-moving-into-unloaded-chunks: true
+    
+    # Entity processing optimizations
+    update-pathfinding-on-block-update: true
+    
+    # Tick rate optimizations
+    container-update-tick-rate: 3
+    grass-spread-tick-rate: 4

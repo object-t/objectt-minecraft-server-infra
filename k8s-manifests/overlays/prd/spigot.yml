@@ -13,7 +13,6 @@ settings:
   timeout-time: 60
   restart-on-crash: true
   restart-script: ./start.sh
-  netty-threads: 4
 messages:
   whitelist: You are not whitelisted on this server!
   unknown-command: Unknown command. Type "/help" for help.
@@ -23,5 +22,5 @@ messages:
   restart: Server is restarting
 world-settings:
   default:
-    view-distance: default
-    simulation-distance: default
+    view-distance: 8
+    simulation-distance: 4
