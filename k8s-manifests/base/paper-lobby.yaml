@@ -14,9 +14,9 @@ spec:
         app: lobby-paper-server
     spec:
       securityContext:
-        fsGroup: 1000
         runAsUser: 1000
-        fsGroupChangePolicy: "OnRootMismatch"
+        runAsGroup: 1000
+        runAsNonRoot: true
       containers:
       - name: paper
         image: itzg/minecraft-server
