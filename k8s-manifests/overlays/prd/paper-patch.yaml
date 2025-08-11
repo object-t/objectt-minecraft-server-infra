@@ -58,7 +58,7 @@ spec:
       - name: paper
         env:
         - name: MEMORY
-          value: "2G"
+          value: "1G"
         resources:
           requests:
             cpu: "1"
@@ -172,6 +172,8 @@ spec:
           value: "6G"
         - name: JVM_XX_OPTS
           value: "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1"
+        - name: COPY_PLUGINS_SRC
+          value: "/plugins"
         resources:
           requests:
             cpu: "2"
@@ -179,9 +181,6 @@ spec:
           limits:
             cpu: "8"
             memory: "8Gi"
-        env:
-        - name: COPY_PLUGINS_SRC
-          value: "/plugins"
         volumeMounts:
         - name: plugins-volume
           mountPath: /plugins
