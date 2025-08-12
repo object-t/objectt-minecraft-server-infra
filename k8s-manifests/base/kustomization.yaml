@@ -6,3 +6,6 @@ resources:
   - paper-survival.yaml
   - minio.yaml
   - cloudflared-tunnel.yaml
+
+patchesStrategicMerge:
+  - minio-sync-patch.yaml
