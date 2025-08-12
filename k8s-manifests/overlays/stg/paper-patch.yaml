@@ -36,6 +36,8 @@ spec:
               key: root-password
         - name: BUCKET_NAME
           value: "plugins"
+        - name: MC_CONFIG_DIR
+          value: "/tmp/.mc"
         volumeMounts:
         - name: plugins-volume
           mountPath: /plugins
@@ -125,6 +127,8 @@ spec:
               key: root-password
         - name: BUCKET_NAME
           value: "plugins"
+        - name: MC_CONFIG_DIR
+          value: "/tmp/.mc"
         volumeMounts:
         - name: plugins-volume
           mountPath: /plugins
