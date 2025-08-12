@@ -20,7 +20,7 @@ spec:
                 - "k8s-wk-3"
       initContainers:
       - name: plugin-downloader
-        image: minio/mc:latest
+        image: minio/mc:latest-cpuv1
         env:
         - name: MINIO_ENDPOINT
           value: "minio-service-stg:9000"
@@ -109,7 +109,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       initContainers:
       - name: plugin-downloader
-        image: minio/mc:latest
+        image: minio/mc:latest-cpuv1
         env:
         - name: MINIO_ENDPOINT
           value: "minio-service-stg:9000"

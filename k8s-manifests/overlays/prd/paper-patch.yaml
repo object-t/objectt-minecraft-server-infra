@@ -7,7 +7,7 @@ spec:
     spec:
       initContainers:
       - name: plugin-downloader
-        image: minio/mc:latest
+        image: minio/mc:latest-cpuv1
         env:
         - name: MINIO_ENDPOINT
           value: "minio-service-prd:9000"
@@ -114,7 +114,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       initContainers:
       - name: plugin-downloader
-        image: minio/mc:latest
+        image: minio/mc:latest-cpuv1
         env:
         - name: MINIO_ENDPOINT
           value: "minio-service-prd:9000"

@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: minio-sync
-        image: minio/mc:latest
+        image: minio/mc:latest-cpuv1
         env:
         - name: MINIO_ENDPOINT
           value: "MINIO_ENDPOINT_PLACEHOLDER"
@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
       - name: minio-sync
-        image: minio/mc:latest
+        image: minio/mc:latest-cpuv1
         env:
         - name: MINIO_ENDPOINT
           value: "MINIO_ENDPOINT_PLACEHOLDER"
