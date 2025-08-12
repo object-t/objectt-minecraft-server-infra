@@ -34,7 +34,7 @@ spec:
         - sh
         - -c
         - |
-          echo "Starting MinIO bidirectional sync..."
+          echo "Starting MinIO real-time bidirectional sync..."
           
           # Configure MinIO connection
           mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
@@ -46,21 +46,20 @@ spec:
           mkdir -p /plugins
           
           echo "Initial sync from MinIO to local..."
-          mc mirror minio/${BUCKET_NAME}/ /plugins/ --overwrite
+          mc mirror minio/${BUCKET_NAME}/ /plugins/ --remove --overwrite
           
-          echo "Starting continuous bidirectional sync..."
-          while true; do
-            # Sync from MinIO to local (downloads)
-            echo "Syncing from MinIO to local..."
-            mc mirror minio/${BUCKET_NAME}/ /plugins/ --overwrite --quiet || echo "Sync from MinIO failed"
-            
-            # Sync from local to MinIO (uploads)
-            echo "Syncing from local to MinIO..."
-            mc mirror /plugins/ minio/${BUCKET_NAME}/ --overwrite --quiet || echo "Sync to MinIO failed"
-            
-            # Wait before next sync cycle
-            sleep 30
-          done
+          echo "Starting real-time sync from MinIO to local (watch mode)..."
+          mc mirror minio/${BUCKET_NAME}/ /plugins/ --watch --remove --overwrite &
+          DOWNLOAD_PID=$!
+          
+          echo "Starting real-time sync from local to MinIO (watch mode)..."
+          mc mirror /plugins/ minio/${BUCKET_NAME}/ --watch --remove --overwrite &
+          UPLOAD_PID=$!
+          
+          echo "Both sync processes started. PIDs: download=$DOWNLOAD_PID, upload=$UPLOAD_PID"
+          
+          # Wait for both processes
+          wait $DOWNLOAD_PID $UPLOAD_PID
         resources:
           requests:
             memory: 64Mi
@@ -108,7 +107,7 @@ spec:
         - sh
         - -c
         - |
-          echo "Starting MinIO bidirectional sync..."
+          echo "Starting MinIO real-time bidirectional sync..."
           
           # Configure MinIO connection
           mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
@@ -120,21 +119,20 @@ spec:
           mkdir -p /plugins
           
           echo "Initial sync from MinIO to local..."
-          mc mirror minio/${BUCKET_NAME}/ /plugins/ --overwrite
+          mc mirror minio/${BUCKET_NAME}/ /plugins/ --remove --overwrite
           
-          echo "Starting continuous bidirectional sync..."
-          while true; do
-            # Sync from MinIO to local (downloads)
-            echo "Syncing from MinIO to local..."
-            mc mirror minio/${BUCKET_NAME}/ /plugins/ --overwrite --quiet || echo "Sync from MinIO failed"
-            
-            # Sync from local to MinIO (uploads)
-            echo "Syncing from local to MinIO..."
-            mc mirror /plugins/ minio/${BUCKET_NAME}/ --overwrite --quiet || echo "Sync to MinIO failed"
-            
-            # Wait before next sync cycle
-            sleep 30
-          done
+          echo "Starting real-time sync from MinIO to local (watch mode)..."
+          mc mirror minio/${BUCKET_NAME}/ /plugins/ --watch --remove --overwrite &
+          DOWNLOAD_PID=$!
+          
+          echo "Starting real-time sync from local to MinIO (watch mode)..."
+          mc mirror /plugins/ minio/${BUCKET_NAME}/ --watch --remove --overwrite &
+          UPLOAD_PID=$!
+          
+          echo "Both sync processes started. PIDs: download=$DOWNLOAD_PID, upload=$UPLOAD_PID"
+          
+          # Wait for both processes
+          wait $DOWNLOAD_PID $UPLOAD_PID
         resources:
           requests:
             memory: 64Mi
