@@ -50,6 +50,10 @@ spec:
           echo "Downloading plugins from MinIO..."
           mkdir -p /plugins
           
+          # Reset existing jar files in plugins directory
+          echo "Resetting existing jar files..."
+          rm -f /plugins/*.jar
+          
           # Configure MinIO connection
           mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
           
@@ -140,6 +144,10 @@ spec:
         - |
           echo "Downloading plugins from MinIO..."
           mkdir -p /plugins
+          
+          # Reset existing jar files in plugins directory
+          echo "Resetting existing jar files..."
+          rm -f /plugins/*.jar
           
           # Configure MinIO connection
           mc alias set minio http://${MINIO_ENDPOINT} ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY}
