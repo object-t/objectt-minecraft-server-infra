@@ -22,13 +22,13 @@ spec:
       - name: fetch-github-keys
         image: curlimages/curl:latest
         command: ["/bin/sh"]
-        args: ["/config/fetch_github_keys.sh"]
+        args: ["/scripts/fetch_github_keys.sh"]
         envFrom:
         - configMapRef:
             name: ssh-github-users
         volumeMounts:
         - name: ssh-config
-          mountPath: /config
+          mountPath: /scripts
         - name: ssh-keys
           mountPath: /config
         securityContext:
