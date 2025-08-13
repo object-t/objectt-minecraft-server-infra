@@ -55,7 +55,7 @@ data:
     fi
     
     echo "Fetching GitHub public keys for users: $GITHUB_USERS"
-    > "$AUTHORIZED_KEYS_FILE"
+    echo "" > "$AUTHORIZED_KEYS_FILE"
     
     IFS=',' read -ra USERS <<< "$GITHUB_USERS"
     for user in "${USERS[@]}"; do
