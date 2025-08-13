@@ -74,7 +74,6 @@ data:
     fi
     
     chmod 600 "$AUTHORIZED_KEYS_FILE"
-    chown 1000:1000 "$AUTHORIZED_KEYS_FILE"
     
     echo "Successfully configured authorized_keys with $(wc -l < "$AUTHORIZED_KEYS_FILE") keys"
 ---
