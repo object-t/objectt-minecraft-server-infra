@@ -25,7 +25,7 @@ data:
     PasswordAuthentication no
     ChallengeResponseAuthentication no
     
-    UsePAM yes
+    UsePAM no
     
     AllowAgentForwarding yes
     AllowTcpForwarding yes
