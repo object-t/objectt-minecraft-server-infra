@@ -7,6 +7,3 @@ resources:
   - minio.yaml
   - cloudflared-tunnel.yaml
   - ssh-config.yaml
-
-patchesStrategicMerge:
-  - minio-sync-patch.yaml
