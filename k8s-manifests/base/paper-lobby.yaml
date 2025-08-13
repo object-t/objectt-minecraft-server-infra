@@ -54,6 +54,8 @@ spec:
           value: "true"
         - name: OPS
           value: "naoido, kurazuuuuuu"
+        - name: ENABLE_COMMAND_BLOCK
+          value: "TRUE"
         volumeMounts:
         - name: config-volume
           mountPath: /config/spigot.yml
