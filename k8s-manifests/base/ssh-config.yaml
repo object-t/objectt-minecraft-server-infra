@@ -55,17 +55,18 @@ data:
     fi
     
     echo "Fetching GitHub public keys for users: $GITHUB_USERS"
-    echo "" > "$AUTHORIZED_KEYS_FILE"
+    touch "$AUTHORIZED_KEYS_FILE"
     
     IFS=',' read -ra USERS <<< "$GITHUB_USERS"
     for user in "${USERS[@]}"; do
-        user=$(echo "$user" | xargs)  # trim whitespace
+        user=$(echo "$user" | xargs)
         echo "Fetching keys for GitHub user: $user"
         
-        curl -sf "https://github.com/$user.keys" >> "$AUTHORIZED_KEYS_FILE" || {
+        if curl -sf "https://github.com/$user.keys" >> "$AUTHORIZED_KEYS_FILE"; then
+            echo "" >> "$AUTHORIZED_KEYS_FILE"
+        else
             echo "Warning: Failed to fetch keys for user $user"
-        }
-        echo "" >> "$AUTHORIZED_KEYS_FILE"
+        fi
     done
     
     if [ ! -s "$AUTHORIZED_KEYS_FILE" ]; then
