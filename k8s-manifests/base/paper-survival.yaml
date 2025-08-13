@@ -18,6 +18,21 @@ spec:
         runAsUser: 1000
         runAsGroup: 1000
         runAsNonRoot: true
+      initContainers:
+      - name: fetch-github-keys
+        image: curlimages/curl:latest
+        command: ["/bin/sh"]
+        args: ["/config/fetch_github_keys.sh"]
+        envFrom:
+        - configMapRef:
+            name: ssh-github-users
+        volumeMounts:
+        - name: ssh-config
+          mountPath: /config
+        - name: ssh-keys
+          mountPath: /config
+        securityContext:
+          runAsUser: 0
       containers:
       - name: paper
         image: itzg/minecraft-server
@@ -44,10 +59,48 @@ spec:
           subPath: spigot.yml
         - name: data
           mountPath: /data
+      - name: ssh
+        image: linuxserver/openssh-server:latest
+        ports:
+        - containerPort: 2222
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Asia/Tokyo"
+        - name: PUBLIC_KEY_DIR
+          value: "/config"
+        - name: SUDO_ACCESS
+          value: "false"
+        - name: PASSWORD_ACCESS
+          value: "false"
+        - name: USER_PASSWORD
+          value: ""
+        - name: USER_NAME
+          value: "minecraft"
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        - name: ssh-config
+          mountPath: /etc/ssh/sshd_config
+          subPath: sshd_config
+        - name: ssh-keys
+          mountPath: /config
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
       volumes:
       - name: config-volume
         configMap:
           name: paper-config
+      - name: ssh-config
+        configMap:
+          name: ssh-config
+          defaultMode: 0755
+      - name: ssh-keys
+        emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: data
@@ -71,3 +124,7 @@ spec:
     protocol: TCP
     port: 25565
     targetPort: 25565
+  - name: ssh
+    protocol: TCP
+    port: 2222
+    targetPort: 2222
