@@ -90,8 +90,9 @@ spec:
         - name: ssh-keys
           mountPath: /config
         securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
+          runAsUser: 0
+          runAsGroup: 0
+          runAsNonRoot: false
       volumes:
       - name: config-volume
         configMap:
