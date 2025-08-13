@@ -43,7 +43,7 @@ data:
     Subsystem sftp /usr/libexec/openssh/sftp-server
     
   fetch_github_keys.sh: |-
-    #!/bin/bash
+    #!/bin/sh
     set -e
     
     GITHUB_USERS="${GITHUB_USERS:-}"
@@ -57,13 +57,13 @@ data:
     echo "Fetching GitHub public keys for users: $GITHUB_USERS"
     touch "$AUTHORIZED_KEYS_FILE"
     
-    IFS=',' read -ra USERS <<< "$GITHUB_USERS"
-    for user in "${USERS[@]}"; do
+    echo "$GITHUB_USERS" | tr ',' '\n' | while read -r user; do
         user=$(echo "$user" | xargs)
-        echo "Fetching keys for GitHub user: $user"
-        
-        curl -sf "https://github.com/$user.keys" >> "$AUTHORIZED_KEYS_FILE" || echo "Warning: Failed to fetch keys for user $user"
-        echo "" >> "$AUTHORIZED_KEYS_FILE"
+        if [ -n "$user" ]; then
+            echo "Fetching keys for GitHub user: $user"
+            curl -sf "https://github.com/$user.keys" >> "$AUTHORIZED_KEYS_FILE" || echo "Warning: Failed to fetch keys for user $user"
+            echo "" >> "$AUTHORIZED_KEYS_FILE"
+        fi
     done
     
     if [ ! -s "$AUTHORIZED_KEYS_FILE" ]; then
