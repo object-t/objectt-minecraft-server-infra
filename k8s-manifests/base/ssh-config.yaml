@@ -24,8 +24,6 @@ data:
     
     PasswordAuthentication no
     ChallengeResponseAuthentication no
-    KerberosAuthentication no
-    GSSAPIAuthentication no
     
     UsePAM yes
     
@@ -35,7 +33,6 @@ data:
     X11Forwarding no
     
     PrintMotd no
-    PrintLastLog yes
     TCPKeepAlive yes
     
     AcceptEnv LANG LC_*
