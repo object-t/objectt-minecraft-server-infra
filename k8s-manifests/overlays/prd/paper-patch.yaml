@@ -183,10 +183,10 @@ spec:
         resources:
           requests:
             cpu: "2"
-            memory: "6Gi"
+            memory: "20Gi"
           limits:
             cpu: "3.5"
-            memory: "7Gi"
+            memory: "23Gi"
         volumeMounts:
         - name: plugins-volume
           mountPath: /plugins
