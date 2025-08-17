@@ -58,6 +58,12 @@ spec:
           value: "TRUE"
         - name: LEVEL_NAME
           value: "lobby"
+        - name: ALLOW_NETHER
+          value: "FALSE"
+        - name: DIFFICULTY
+          value: "peaceful"
+        - name: MODE
+          value: "adventure"
         volumeMounts:
         - name: config-volume
           mountPath: /config/spigot.yml
